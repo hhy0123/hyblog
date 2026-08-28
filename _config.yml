@@ -1,0 +1,104 @@
+# The Site Configuration
+# 이 파일은 "테마 설정"입니다. 글 내용은 여기 안 쓰고 _posts 폴더에 씁니다.
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# 화면 언어(레이아웃 텍스트: "홈", "태그" 같은 UI 문구). 본문 내용의 언어와는 무관합니다.
+lang: ko-KR
+
+# 시간대. 글 작성 시간이 이 기준으로 표시됩니다.
+timezone: Asia/Seoul
+
+# ↓-------------------------- SEO / 기본 정보 --------------------------
+
+title: hy의 학습노트 # 사이트 제목
+
+tagline: 개발을 배우며 남기는 기록 # 제목 아래 부제
+
+description: >- # 검색엔진, RSS에 쓰이는 사이트 설명
+  개발을 배우면서 그날그날 정리한 것을 남기는 학습 블로그입니다.
+
+# 반드시 채워야 합니다. 끝에 '/' 붙이지 마세요.
+# 예: "https://내깃허브아이디.github.io"
+url: "https://<GITHUB_USERNAME>.github.io"
+
+github:
+  username: <GITHUB_USERNAME> # 본인 GitHub 아이디로 교체
+
+# twitter:
+#   username: <트위터 아이디가 있으면 주석 해제>
+
+social:
+  name: hy # 글 작성자로 표시될 이름
+  email: # 본인 이메일 (선택, 비워도 됨)
+  links:
+    - https://github.com/<GITHUB_USERNAME> # 본인 GitHub 프로필
+
+# ↑-------------------------- SEO / 기본 정보 끝 --------------------------
+
+# 방문자 설정과 무관하게 항상 다크 모드로 고정합니다.
+# 비워두면(빈 값) 방문자의 시스템 설정을 따라 자동으로 라이트/다크가 바뀝니다.
+theme_mode: dark # [light | dark]
+
+# 사이드바에 표시할 프로필 이미지. assets/img 안에 넣고 경로 지정 (예: /assets/img/avatar.jpg)
+avatar:
+
+# 글마다 자동으로 만들어지는 목차(TOC) 기능. 가독성에 도움이 되니 켜둡니다.
+toc: true
+
+comments:
+  provider: # 댓글 기능을 쓰려면 [disqus | utterances | giscus] 중 선택, 지금은 비워둠
+
+paginate: 10 # 홈 화면에 한 번에 보여줄 글 개수
+
+# 프로젝트 페이지(예: username.github.io/my-blog)로 운영할 때 저장소 이름과 똑같이 맞춰야 합니다.
+baseurl: "/my-blog"
+
+# ------------ 아래는 특별한 이유 없으면 그대로 두는 걸 추천 ------------------
+
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
+sass:
+  style: compressed
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
+  - README.md
+  - LICENSE
