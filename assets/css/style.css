@@ -321,16 +321,6 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 0.25rem;
 }
 
-.post-header::before {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 4px;
-  border-radius: 4px;
-  margin-bottom: 1.1rem;
-  background: linear-gradient(90deg, var(--link), var(--accent-purple));
-}
-
 .post-header h1,
 .page h1 {
   margin: 0 0 0.5rem;
