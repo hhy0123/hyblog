@@ -2,7 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "jekyll-theme-chirpy", "~> 7.6"
+gem "jekyll", "~> 4.3"
+gem "webrick", "~> 1.8" # 로컬 `jekyll serve` 실행에 필요 (Ruby 3+ 기본 미포함)
 
 gem "html-proofer", "~> 5.0", group: :test
 

@@ -1,0 +1,47 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      {% if page.categories.size > 0 %}
+        {% for c in page.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
+      {% endif %}
+    </p>
+    {% if page.tags.size > 0 %}
+    <p class="post-tags">
+      {% for t in page.tags %}<span class="badge badge-tag">#{{ t }}</span>{% endfor %}
+    </p>
+    {% endif %}
+  </header>
+
+  {% if page.toc %}
+  <nav class="toc" id="toc">
+    <strong>목차</strong>
+    <ul id="toc-list"></ul>
+  </nav>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
+
+{% if page.mermaid %}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.js';
+
+  document.querySelectorAll('pre code.language-mermaid').forEach(function (codeEl) {
+    var wrapper = codeEl.closest('div.highlighter-rouge') || codeEl.closest('pre');
+    var div = document.createElement('div');
+    div.className = 'mermaid';
+    div.textContent = codeEl.textContent;
+    wrapper.replaceWith(div);
+  });
+
+  mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+  mermaid.run({ querySelector: '.mermaid' });
+</script>
+{% endif %}
