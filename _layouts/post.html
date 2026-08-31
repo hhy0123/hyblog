@@ -1,33 +1,37 @@
 ---
 layout: default
 ---
-<article class="post">
-  <header class="post-header">
-    <h1>{{ page.title }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-      {% if page.categories.size > 0 %}
-        {% for c in page.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
+<div class="post-grid{% unless page.toc %} no-sidebar{% endunless %}">
+  <article class="post">
+    <header class="post-header">
+      <h1>{{ page.title }}</h1>
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+        {% if page.categories.size > 0 %}
+          {% for c in page.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
+        {% endif %}
+      </p>
+      {% if page.tags.size > 0 %}
+      <p class="post-tags">
+        {% for t in page.tags %}<span class="badge badge-tag">#{{ t }}</span>{% endfor %}
+      </p>
       {% endif %}
-    </p>
-    {% if page.tags.size > 0 %}
-    <p class="post-tags">
-      {% for t in page.tags %}<span class="badge badge-tag">#{{ t }}</span>{% endfor %}
-    </p>
-    {% endif %}
-  </header>
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+  </article>
 
   {% if page.toc %}
-  <nav class="toc" id="toc">
-    <strong>목차</strong>
-    <ul id="toc-list"></ul>
-  </nav>
+  <aside class="post-sidebar">
+    <nav class="toc" id="toc">
+      <strong>목차</strong>
+      <ul id="toc-list"></ul>
+    </nav>
+  </aside>
   {% endif %}
-
-  <div class="post-content">
-    {{ content }}
-  </div>
-</article>
+</div>
 
 {% if page.mermaid %}
 <script type="module">

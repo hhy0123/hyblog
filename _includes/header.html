@@ -1,7 +1,6 @@
 <header class="site-header">
-  <div class="wrap">
+  <div class="wrap site-header-inner">
     <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    <p class="site-tagline">{{ site.tagline }}</p>
     <nav class="site-nav">
       {% for link in site.nav_links %}
         <a href="{{ link.url | relative_url }}"{% if page.url == link.url %} class="active"{% endif %}>{{ link.title }}</a>

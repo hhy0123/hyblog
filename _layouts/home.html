@@ -1,19 +1,32 @@
 ---
 layout: default
 ---
-<div class="post-list">
-  {% for post in site.posts %}
-    <article class="post-preview">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-        {% if post.categories.size > 0 %}
-          {% for c in post.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
-        {% endif %}
-      </p>
-      {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>{% endif %}
-    </article>
-  {% else %}
-    <p class="empty">아직 작성된 글이 없습니다.</p>
-  {% endfor %}
+<div class="hero">
+  <div class="hero-avatar">hy</div>
+  <div>
+    <h1 class="hero-title">{{ site.tagline }}</h1>
+    <p class="hero-desc">{{ site.description }}</p>
+  </div>
+</div>
+
+<div class="home-grid">
+  <div class="home-main">
+    <div class="post-list">
+      {% for post in site.posts %}
+        <article class="post-preview">
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p class="post-meta">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            {% if post.categories.size > 0 %}
+              {% for c in post.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
+            {% endif %}
+          </p>
+          {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>{% endif %}
+        </article>
+      {% else %}
+        <p class="empty">아직 작성된 글이 없습니다.</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% include sidebar.html %}
 </div>

@@ -1,30 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var tocList = document.getElementById("toc-list");
-  if (!tocList) return;
-
   var headings = document.querySelectorAll(".post-content h2, .post-content h3");
-  if (!headings.length) {
-    var toc = document.getElementById("toc");
-    if (toc) toc.style.display = "none";
-    return;
-  }
+  var tocList = document.getElementById("toc-list");
 
   headings.forEach(function (heading) {
+    var text = heading.textContent.trim();
+
     if (!heading.id) {
-      heading.id = heading.textContent
-        .trim()
-        .toLowerCase()
-        .replace(/[^\wㄱ-힝]+/g, "-");
+      heading.id = text.toLowerCase().replace(/[^\wㄱ-힝]+/g, "-");
     }
 
-    var li = document.createElement("li");
-    if (heading.tagName === "H3") li.className = "toc-sub";
+    var anchor = document.createElement("a");
+    anchor.className = "heading-anchor";
+    anchor.href = "#" + heading.id;
+    anchor.textContent = "#";
+    anchor.setAttribute("aria-label", "이 섹션으로 링크");
+    heading.appendChild(anchor);
 
-    var a = document.createElement("a");
-    a.href = "#" + heading.id;
-    a.textContent = heading.textContent;
+    if (tocList) {
+      var li = document.createElement("li");
+      if (heading.tagName === "H3") li.className = "toc-sub";
 
-    li.appendChild(a);
-    tocList.appendChild(li);
+      var a = document.createElement("a");
+      a.href = "#" + heading.id;
+      a.textContent = text;
+
+      li.appendChild(a);
+      tocList.appendChild(li);
+    }
   });
+
+  if (tocList && !headings.length) {
+    var toc = document.getElementById("toc");
+    if (toc) toc.style.display = "none";
+  }
 });
