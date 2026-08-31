@@ -2,7 +2,7 @@
 layout: post
 title: "빌드 문제는 해결했지만 밋밋했던 디자인을 직접 테마를 만들어 바꾼 과정"
 date: 2026-08-31 15:39:00 +0900
-categories: [블로그]
+categories: [웹개발]
 tags: [jekyll, liquid, css, github-actions, theme]
 mermaid: true
 ---
