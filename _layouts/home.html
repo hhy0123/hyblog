@@ -4,7 +4,13 @@ layout: default
 <div class="hero">
   <div class="hero-avatar">hy</div>
   <div class="hero-search">
-    <input type="text" id="post-search" placeholder="글 제목·태그로 검색" autocomplete="off">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M18 18L13.8 13.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="post-search" placeholder="글 제목, 본문, 태그로 검색" autocomplete="off">
+    </div>
     <p class="hero-meta">전체 {{ site.posts.size }}개의 글 · 카테고리 {{ site.categories.size }}개 · 태그 {{ site.tags.size }}개</p>
   </div>
 </div>
@@ -16,7 +22,7 @@ layout: default
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
     "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
-    "excerpt": {{ post.excerpt | strip_html | strip_newlines | truncate: 100 | jsonify }},
+    "excerpt": {{ post.content | strip_html | strip_newlines | normalize_whitespace | jsonify }},
     "categories": {{ post.categories | jsonify }},
     "tags": {{ post.tags | jsonify }}
   }{% unless forloop.last %},{% endunless %}
@@ -36,7 +42,7 @@ layout: default
               {% for c in post.categories %}<span class="badge badge-category">{{ c }}</span>{% endfor %}
             {% endif %}
           </p>
-          {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>{% endif %}
+          <p class="post-excerpt">{{ post.content | strip_html | strip_newlines | normalize_whitespace | truncate: 140 }}</p>
         </article>
       {% else %}
         <p class="empty">아직 작성된 글이 없습니다.</p>

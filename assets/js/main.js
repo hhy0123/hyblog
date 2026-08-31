@@ -85,7 +85,8 @@ function initPostSearch() {
 
       var excerpt = document.createElement("p");
       excerpt.className = "post-excerpt";
-      excerpt.textContent = post.excerpt;
+      excerpt.textContent =
+        post.excerpt.length > 140 ? post.excerpt.slice(0, 140) + "…" : post.excerpt;
 
       article.appendChild(h2);
       article.appendChild(meta);
