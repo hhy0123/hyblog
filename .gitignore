@@ -15,3 +15,7 @@ _site
 *~
 .DS_Store
 Thumbs.db
+
+# Local Claude Code files (not for publishing)
+.claude/
+CLAUDE.md
