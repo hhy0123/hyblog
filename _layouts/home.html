@@ -3,9 +3,25 @@ layout: default
 ---
 <div class="hero">
   <div class="hero-avatar">hy</div>
-  <div>
-    <h1 class="hero-title">{{ site.tagline }}</h1>
-    <p class="hero-desc">{{ site.description }}</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">{{ site.posts.size }}</span>
+      <span class="stat-label">Posts</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">{{ site.categories.size }}</span>
+      <span class="stat-label">Categories</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">{{ site.tags.size }}</span>
+      <span class="stat-label">Tags</span>
+    </div>
+    {% if site.posts.first %}
+    <div class="stat">
+      <span class="stat-num">{{ site.posts.first.date | date: "%m.%d" }}</span>
+      <span class="stat-label">Latest</span>
+    </div>
+    {% endif %}
   </div>
 </div>
 
