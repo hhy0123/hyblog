@@ -153,8 +153,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-search {
-  flex: 1;
-  min-width: 0;
+  flex: 0 0 auto;
+  width: 260px;
+  max-width: 100%;
 }
 
 .search-box {
@@ -163,10 +164,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .search-box .search-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.85rem;
   top: 50%;
-  width: 16px;
-  height: 16px;
+  width: 13px;
+  height: 13px;
   color: var(--text-muted);
   transform: translateY(-50%);
   pointer-events: none;
@@ -174,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-search input {
   width: 100%;
-  padding: 0.8rem 1.1rem 0.8rem 2.6rem;
+  padding: 0.55rem 0.9rem 0.55rem 2.1rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--bg-elevated);
@@ -637,8 +638,7 @@ table.rouge-table pre {
     align-items: flex-start;
   }
 
-  .hero-stats {
-    flex-wrap: wrap;
-    row-gap: 1rem;
+  .hero-search {
+    width: 100%;
   }
 }

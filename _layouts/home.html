@@ -9,7 +9,7 @@ layout: default
         <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/>
         <path d="M18 18L13.8 13.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
-      <input type="text" id="post-search" placeholder="글 제목, 본문, 태그로 검색" autocomplete="off">
+      <input type="text" id="post-search" placeholder="제목, 카테고리, 태그 검색" autocomplete="off">
     </div>
     <p class="hero-meta">전체 {{ site.posts.size }}개의 글 · 카테고리 {{ site.categories.size }}개 · 태그 {{ site.tags.size }}개</p>
   </div>
@@ -22,7 +22,7 @@ layout: default
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
     "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
-    "excerpt": {{ post.content | strip_html | strip_newlines | normalize_whitespace | jsonify }},
+    "excerpt": {{ post.content | strip_html | strip_newlines | normalize_whitespace | truncate: 100 | jsonify }},
     "categories": {{ post.categories | jsonify }},
     "tags": {{ post.tags | jsonify }}
   }{% unless forloop.last %},{% endunless %}

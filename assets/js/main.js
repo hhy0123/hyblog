@@ -110,7 +110,7 @@ function initPostSearch() {
     if (paginationEl) paginationEl.hidden = true;
 
     var results = posts.filter(function (post) {
-      var haystack = [post.title, post.excerpt]
+      var haystack = [post.title]
         .concat(post.categories || [])
         .concat(post.tags || [])
         .join(" ")
