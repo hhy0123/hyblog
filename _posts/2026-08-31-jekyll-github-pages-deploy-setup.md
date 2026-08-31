@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Jekyll 블로그가 GitHub Pages에서 빌드되지 않던 문제 해결기"
-date: 2026-08-31 09:00:00 +0900
+date: 2026-08-31 14:35:00 +0900
 categories: [인프라]
 tags: [jekyll, github-actions, github-pages, ci-cd, infra]
 mermaid: true
