@@ -45,6 +45,12 @@ baseurl: "/hyblog"
 
 # ------------ 아래는 특별한 이유 없으면 그대로 두는 걸 추천 ------------------
 
+plugins:
+  - jekyll-paginate
+
+paginate: 4 # 홈 화면에 한 번에 보여줄 글 개수
+paginate_path: "/page:num/"
+
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:

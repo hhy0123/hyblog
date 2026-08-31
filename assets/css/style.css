@@ -311,6 +311,39 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 2rem;
+}
+
+.pagination .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pagination a.page-link:hover {
+  color: var(--link-hover);
+  border-color: rgb(110 143 255 / 45%);
+  text-decoration: none;
+}
+
+.pagination .page-link.current {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--link), var(--accent-purple));
+}
+
 /* ---------- Post / Page ---------- */
 
 .page {

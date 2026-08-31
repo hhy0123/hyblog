@@ -12,7 +12,7 @@ layout: default
 <div class="home-grid">
   <div class="home-main">
     <div class="post-list">
-      {% for post in site.posts %}
+      {% for post in paginator.posts %}
         <article class="post-preview">
           <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
           <p class="post-meta">
@@ -27,6 +27,32 @@ layout: default
         <p class="empty">아직 작성된 글이 없습니다.</p>
       {% endfor %}
     </div>
+
+    {% if paginator.total_pages > 1 %}
+    <nav class="pagination">
+      {% if paginator.previous_page %}
+        <a class="page-link" href="{{ paginator.previous_page_path | relative_url }}">&larr;</a>
+      {% endif %}
+
+      {% for p in (1..paginator.total_pages) %}
+        {% if p == 1 %}
+          {% assign page_path = "/" %}
+        {% else %}
+          {% assign page_path = site.paginate_path | replace: ':num', p %}
+        {% endif %}
+
+        {% if p == paginator.page %}
+          <span class="page-link current">{{ p }}</span>
+        {% else %}
+          <a class="page-link" href="{{ page_path | relative_url }}">{{ p }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+        <a class="page-link" href="{{ paginator.next_page_path | relative_url }}">&rarr;</a>
+      {% endif %}
+    </nav>
+    {% endif %}
   </div>
   {% include sidebar.html %}
 </div>
