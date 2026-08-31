@@ -152,38 +152,37 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 24px rgb(110 143 255 / 25%);
 }
 
-.hero-stats {
-  display: flex;
-  gap: 1.75rem;
+.hero-search {
+  flex: 1;
+  min-width: 0;
 }
 
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding-right: 1.75rem;
-  border-right: 1px solid var(--border);
+.hero-search input {
+  width: 100%;
+  padding: 0.75rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.stat:last-child {
-  padding-right: 0;
-  border-right: none;
-}
-
-.stat-num {
-  font-size: 1.4rem;
-  font-weight: 800;
-  background: linear-gradient(90deg, #8fb0ff, var(--accent-purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.stat-label {
-  font-size: 0.75rem;
+.hero-search input::placeholder {
   color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+}
+
+.hero-search input:focus {
+  border-color: var(--link);
+  box-shadow: 0 0 0 3px rgb(110 143 255 / 18%);
+}
+
+.hero-meta {
+  margin: 0.6rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
 }
 
 /* ---------- Home grid / sidebar ---------- */
