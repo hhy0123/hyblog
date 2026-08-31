@@ -1,19 +1,13 @@
 ---
-# 상단 이 부분(front matter)은 형식이라 그대로 두세요.
 icon: fas fa-info-circle
 order: 4
 ---
 
-<!--
-  여기부터는 자유롭게 마크다운으로 자기소개를 쓰면 됩니다. 예시 형식:
+## 소개
+안녕하세요, hy입니다. 서버 엔지니어를 주 목표로, 백엔드·데이터 엔지니어링에도 관심을 두고 공부하고 있습니다.
 
-  ## 소개
-  안녕하세요, ...
+## 이 블로그는
+개발을 배우면서 그날그날 정리한 내용을 남기는 학습 기록입니다.
 
-  ## 배우고 있는 것
-  - Git, GitHub
-  - ...
-
-  ## 연락
-  - GitHub: https://github.com/<GITHUB_USERNAME>
--->
+## 연락
+- GitHub: [https://github.com/hhy0123](https://github.com/hhy0123)
