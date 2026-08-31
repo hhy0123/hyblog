@@ -40,8 +40,6 @@ nav_links:
 # 글마다 자동으로 만들어지는 목차(TOC). 가독성에 도움이 되니 켜둡니다.
 toc: true
 
-paginate: 10 # 홈 화면에 한 번에 보여줄 글 개수
-
 # 프로젝트 페이지(예: username.github.io/my-blog)로 운영할 때 저장소 이름과 똑같이 맞춰야 합니다.
 baseurl: "/hyblog"
 
@@ -56,9 +54,6 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
-
-plugins:
-  - jekyll-paginate
 
 defaults:
   - scope:
