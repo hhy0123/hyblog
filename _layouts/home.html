@@ -22,7 +22,6 @@ layout: default
     "title": {{ post.title | jsonify }},
     "url": {{ post.url | relative_url | jsonify }},
     "date": {{ post.date | date: "%Y-%m-%d" | jsonify }},
-    "excerpt": {{ post.content | strip_html | strip_newlines | normalize_whitespace | truncate: 100 | jsonify }},
     "categories": {{ post.categories | jsonify }},
     "tags": {{ post.tags | jsonify }}
   }{% unless forloop.last %},{% endunless %}

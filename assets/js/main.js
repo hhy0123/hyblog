@@ -82,15 +82,15 @@ function initPostSearch() {
         badge.textContent = c;
         meta.appendChild(badge);
       });
-
-      var excerpt = document.createElement("p");
-      excerpt.className = "post-excerpt";
-      excerpt.textContent =
-        post.excerpt.length > 140 ? post.excerpt.slice(0, 140) + "…" : post.excerpt;
+      (post.tags || []).forEach(function (t) {
+        var badge = document.createElement("span");
+        badge.className = "badge badge-tag";
+        badge.textContent = "#" + t;
+        meta.appendChild(badge);
+      });
 
       article.appendChild(h2);
       article.appendChild(meta);
-      article.appendChild(excerpt);
       resultsEl.appendChild(article);
     });
   }
