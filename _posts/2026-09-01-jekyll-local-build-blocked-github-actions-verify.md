@@ -72,17 +72,13 @@ mermaid: true
 여기서부터가 진짜 삽질 구간이다. 아래 순서로 막혔다.
 
 ```mermaid
-flowchart TD
-    A[기능 구현 완료] --> B{로컬에 ruby/jekyll 있음?}
-    B -->|없음| C[winget으로 Ruby + DevKit 설치]
-    C --> D{gem install 성공?}
-    D -->|"invalid byte sequence in UTF-8"| E[RUBYOPT=-Eutf-8:utf-8 적용]
-    E --> F{그래도 install/bundle 실패?}
-    F -->|예| G[InstallCommand를 직접 로드해서 진짜 예외 확인]
-    G --> H["Windows Application Control Policy가 digest.so 차단(오류 4551)"]
-    H --> I[정책을 우회하지 않고 Ruby 제거]
-    I --> J[push 후 GitHub Actions API로 빌드 성공 확인]
-    J --> K[실제 배포된 사이트 육안 확인]
+flowchart LR
+    A[Ruby 없음] --> B[winget으로 설치]
+    B --> C{gem install 성공?}
+    C -->|인코딩 에러| D[RUBYOPT로 해결]
+    D --> E{그래도 실패?}
+    E -->|Windows 정책 차단| F[Ruby 제거]
+    F --> G[Actions API로 검증]
 ```
 
 처음엔 이 PC에 `ruby`, `bundle`, `jekyll`이 아예 없어서 `winget`으로 Ruby(with DevKit)를 설치했다. `ruby --version`, `gem list`까지는 잘 됐는데, `bundle install`을 돌리자 `Gem::Security` 관련 `NoMethodError`가 났다. `gem install bundler`로 최신 bundler를 받아보려 했더니 이번엔 `invalid byte sequence in UTF-8`라는 전혀 다른 에러가 떴다.

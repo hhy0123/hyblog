@@ -701,6 +701,12 @@ table.rouge-table pre {
   padding: 1rem;
   margin: 1.5rem 0;
   text-align: center;
+  overflow-x: auto;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ---------- Footer ---------- */
