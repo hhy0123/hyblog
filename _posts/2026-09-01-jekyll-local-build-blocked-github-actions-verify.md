@@ -39,6 +39,7 @@ mermaid: true
 
 카테고리 배지는 사이드바가 이미 쓰고 있던 "인덱스를 4로 나눈 나머지로 색을 고르는" 규칙을 그대로 재사용했다. `site.categories`를 순회하며 이름이 일치하는 카테고리의 인덱스를 찾는 Liquid include를 만들었다.
 
+{% raw %}
 ```liquid
 {%- assign cc_idx = -1 -%}
 {%- for cc in site.categories -%}
@@ -46,6 +47,7 @@ mermaid: true
 {%- endfor -%}
 {%- if cc_idx >= 0 -%}{%- assign cc_mod = cc_idx | modulo: 4 -%}cat-{{ cc_mod }}{%- endif -%}
 ```
+{% endraw %}
 
 검색 결과는 JS로 그려지기 때문에, 같은 색상 규칙을 JS에서도 써야 했다. Liquid로 `{카테고리명: "cat-N"}` 매핑을 JSON `<script>` 태그로 미리 구워두고, `main.js`에서 그대로 읽어 썼다.
 
