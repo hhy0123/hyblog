@@ -211,6 +211,51 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
 }
 
+.hero-actions {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.bookmark-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.bookmark-filter-btn .star-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.bookmark-filter-btn:hover {
+  border-color: rgb(110 143 255 / 35%);
+  color: var(--text);
+}
+
+.bookmark-filter-btn.is-active {
+  border-color: var(--link);
+  background: rgb(110 143 255 / 12%);
+  color: var(--link-hover);
+}
+
+.bookmark-filter-btn.is-active .star-icon path {
+  fill: currentColor;
+}
+
+.bookmark-count {
+  font-size: 0.78rem;
+  color: inherit;
+}
+
 /* ---------- Home grid / sidebar ---------- */
 
 .home-grid,
@@ -307,7 +352,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .post-preview {
   position: relative;
-  padding: 1.25rem 1.25rem 1.25rem 1.6rem;
+  padding: 1.25rem 2.75rem 1.25rem 1.6rem;
   margin-bottom: 1.1rem;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
@@ -353,6 +398,45 @@ h1, h2, h3, h4, h5, h6 {
 .post-excerpt {
   color: var(--text-muted);
   margin: 0.5rem 0 0;
+}
+
+.bookmark-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.bookmark-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bookmark-btn:hover {
+  color: var(--link-hover);
+  background: rgb(110 143 255 / 12%);
+}
+
+.bookmark-btn.is-active {
+  color: #f4c15c;
+}
+
+.bookmark-btn.is-active svg path {
+  fill: currentColor;
+}
+
+.post-preview > .bookmark-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
 .empty {
@@ -406,6 +490,25 @@ h1, h2, h3, h4, h5, h6 {
 .page h1 {
   margin: 0 0 0.5rem;
   font-size: 1.9rem;
+}
+
+.post-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.post-title-row .bookmark-btn {
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  width: 34px;
+  height: 34px;
+}
+
+.post-title-row .bookmark-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .post-meta {
@@ -640,5 +743,15 @@ table.rouge-table pre {
 
   .hero-search {
     width: 100%;
+  }
+
+  .hero-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .bookmark-filter-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

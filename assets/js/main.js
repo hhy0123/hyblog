@@ -35,14 +35,100 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   initPostSearch();
+  initBookmarks();
 });
+
+var BOOKMARK_KEY = "hyblog-bookmarks";
+var STAR_SVG =
+  '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6l2.47 5.24 5.78.68-4.3 3.97 1.18 5.7L10 14.9l-5.13 2.29 1.18-5.7L1.75 7.52l5.78-.68L10 1.6z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>';
+
+function getBookmarks() {
+  try {
+    return JSON.parse(localStorage.getItem(BOOKMARK_KEY) || "[]");
+  } catch (e) {
+    return [];
+  }
+}
+
+function setBookmarks(list) {
+  try {
+    localStorage.setItem(BOOKMARK_KEY, JSON.stringify(list));
+  } catch (e) {}
+}
+
+function toggleBookmark(url) {
+  var list = getBookmarks();
+  var idx = list.indexOf(url);
+  if (idx === -1) {
+    list.push(url);
+  } else {
+    list.splice(idx, 1);
+  }
+  setBookmarks(list);
+  return list;
+}
+
+function makeBookmarkButton(url) {
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "bookmark-btn";
+  btn.setAttribute("data-url", url);
+  btn.setAttribute("aria-label", "즐겨찾기에 추가");
+  btn.setAttribute("aria-pressed", "false");
+  btn.innerHTML = STAR_SVG;
+  return btn;
+}
+
+function paintBookmarkButtons(list) {
+  document.querySelectorAll(".bookmark-btn").forEach(function (btn) {
+    var active = list.indexOf(btn.getAttribute("data-url")) !== -1;
+    btn.classList.toggle("is-active", active);
+    btn.setAttribute("aria-pressed", active ? "true" : "false");
+  });
+}
+
+function initBookmarks() {
+  var filterBtn = document.getElementById("bookmark-filter");
+  var countEl = document.getElementById("bookmark-count");
+
+  function refresh() {
+    var list = getBookmarks();
+    paintBookmarkButtons(list);
+    if (countEl) {
+      countEl.hidden = list.length === 0;
+      countEl.textContent = list.length;
+    }
+    return list;
+  }
+
+  refresh();
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".bookmark-btn");
+    if (!btn) return;
+    toggleBookmark(btn.getAttribute("data-url"));
+    refresh();
+    document.dispatchEvent(new CustomEvent("bookmarks-changed"));
+  });
+
+  if (filterBtn) {
+    filterBtn.addEventListener("click", function () {
+      var active = !filterBtn.classList.contains("is-active");
+      filterBtn.classList.toggle("is-active", active);
+      filterBtn.setAttribute("aria-pressed", active ? "true" : "false");
+      document.dispatchEvent(new CustomEvent("bookmark-filter-toggled", { detail: { active: active } }));
+    });
+  }
+}
 
 function initPostSearch() {
   var input = document.getElementById("post-search");
   var indexEl = document.getElementById("search-index");
+  var colorsEl = document.getElementById("category-colors");
   var listEl = document.getElementById("post-list");
   var resultsEl = document.getElementById("search-results");
   var paginationEl = document.getElementById("pagination");
+  var filterBtn = document.getElementById("bookmark-filter");
 
   if (!input || !indexEl || !listEl || !resultsEl) return;
 
@@ -53,17 +139,26 @@ function initPostSearch() {
     posts = [];
   }
 
-  function renderResults(results) {
+  var categoryColors = {};
+  try {
+    categoryColors = colorsEl ? JSON.parse(colorsEl.textContent) : {};
+  } catch (e) {
+    categoryColors = {};
+  }
+
+  function renderResults(results, emptyMessage) {
     resultsEl.innerHTML = "";
 
     if (!results.length) {
-      resultsEl.innerHTML = '<p class="empty">검색 결과가 없습니다.</p>';
+      resultsEl.innerHTML = '<p class="empty">' + emptyMessage + "</p>";
       return;
     }
 
     results.forEach(function (post) {
       var article = document.createElement("article");
       article.className = "post-preview";
+
+      article.appendChild(makeBookmarkButton(post.url));
 
       var h2 = document.createElement("h2");
       var a = document.createElement("a");
@@ -78,7 +173,7 @@ function initPostSearch() {
       meta.appendChild(time);
       (post.categories || []).forEach(function (c) {
         var badge = document.createElement("span");
-        badge.className = "badge badge-category";
+        badge.className = "badge badge-category" + (categoryColors[c] ? " " + categoryColors[c] : "");
         badge.textContent = c;
         meta.appendChild(badge);
       });
@@ -93,9 +188,11 @@ function initPostSearch() {
       article.appendChild(meta);
       resultsEl.appendChild(article);
     });
+
+    paintBookmarkButtons(getBookmarks());
   }
 
-  input.addEventListener("input", function () {
+  function renderSearch() {
     var q = input.value.trim().toLowerCase();
 
     if (!q) {
@@ -118,6 +215,42 @@ function initPostSearch() {
       return haystack.indexOf(q) !== -1;
     });
 
-    renderResults(results);
+    renderResults(results, "검색 결과가 없습니다.");
+  }
+
+  function renderBookmarked() {
+    var list = getBookmarks();
+    var results = posts.filter(function (post) {
+      return list.indexOf(post.url) !== -1;
+    });
+
+    listEl.hidden = true;
+    resultsEl.hidden = false;
+    if (paginationEl) paginationEl.hidden = true;
+
+    renderResults(results, "즐겨찾기한 글이 없습니다.");
+  }
+
+  input.addEventListener("input", function () {
+    if (filterBtn && filterBtn.classList.contains("is-active")) {
+      filterBtn.classList.remove("is-active");
+      filterBtn.setAttribute("aria-pressed", "false");
+    }
+    renderSearch();
   });
+
+  if (filterBtn) {
+    document.addEventListener("bookmark-filter-toggled", function (e) {
+      if (e.detail.active) {
+        input.value = "";
+        renderBookmarked();
+      } else {
+        renderSearch();
+      }
+    });
+
+    document.addEventListener("bookmarks-changed", function () {
+      if (filterBtn.classList.contains("is-active")) renderBookmarked();
+    });
+  }
 }

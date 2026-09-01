@@ -1,0 +1,5 @@
+{%- assign cc_idx = -1 -%}
+{%- for cc in site.categories -%}
+  {%- if cc[0] == include.name -%}{%- assign cc_idx = forloop.index0 -%}{%- endif -%}
+{%- endfor -%}
+{%- if cc_idx >= 0 -%}{%- assign cc_mod = cc_idx | modulo: 4 -%}cat-{{ cc_mod }}{%- endif -%}
