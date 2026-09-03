@@ -191,6 +191,14 @@ function initPostSearch() {
 
       article.appendChild(h2);
       article.appendChild(meta);
+
+      if (post.excerpt) {
+        var excerpt = document.createElement("p");
+        excerpt.className = "post-excerpt";
+        excerpt.textContent = post.excerpt;
+        article.appendChild(excerpt);
+      }
+
       resultsEl.appendChild(article);
     });
 
