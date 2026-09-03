@@ -7,6 +7,10 @@ tags: [jekyll, github-actions, javascript, css, liquid]
 mermaid: true
 ---
 
+히어로 영역 빈 공간에 즐겨찾기 기능을 넣으려다, 로컬 Jekyll 빌드가 막혀 GitHub Actions로 대신 검증한 기록이다.
+
+<!--more-->
+
 ## 히어로 영역의 빈 공간을 채우려던 참이었다 (Situation)
 
 지난 글([빌드 문제는 해결했지만 밋밋했던 디자인을 직접 테마를 만들어 바꾼 과정]({{ '/posts/jekyll-theme-from-scratch/' | relative_url }}))에서 만든 자체 제작 테마로 블로그를 운영하면서, 홈 화면 히어로 영역(검색창이 있는 상단 배너)을 다듬는 작업을 하고 있었다. 검색창이 고정 너비(260px)로 배치돼 있다 보니 그 옆으로 빈 공간이 꽤 남았는데, 이 공간을 장식이 아니라 실제로 쓸모 있는 기능으로 채우고 싶었다.

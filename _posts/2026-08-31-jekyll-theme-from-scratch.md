@@ -7,6 +7,10 @@ tags: [jekyll, liquid, css, github-actions, theme]
 mermaid: true
 ---
 
+빌드는 정상화됐지만 밋밋했던 기본 테마를 걷어내고, 직접 Jekyll 테마를 만든 과정이다.
+
+<!--more-->
+
 ## 빌드는 됐는데, 디자인이 문제였다 (Situation)
 
 지난 글([Jekyll 블로그가 GitHub Pages에서 빌드되지 않던 문제 해결기]({{ '/posts/jekyll-github-pages-deploy-setup/' | relative_url }}))에서 GitHub Actions 빌드 자체는 정상화했다. 하지만 그건 어디까지나 "배포가 되느냐"의 문제였고, 실제로 사이트를 열어보니 Chirpy 테마의 기본 다크 색상이 밋밋하게 느껴졌다. 처음엔 색만 살짝 바꾸면 될 줄 알았는데, 결국 테마 젬 자체를 걷어내고 레이아웃을 직접 만드는 데까지 이어졌다.

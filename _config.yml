@@ -40,6 +40,10 @@ nav_links:
 # 글마다 자동으로 만들어지는 목차(TOC). 가독성에 도움이 되니 켜둡니다.
 toc: true
 
+# 홈 화면 미리보기(excerpt)를 자를 위치. 각 글 머리말 바로 다음에 한 줄 요약 + 이 구분자를 넣어두면
+# 소제목/본문이 아니라 그 요약 한 줄이 미리보기로 뽑힙니다.
+excerpt_separator: "<!--more-->"
+
 # 프로젝트 페이지(예: username.github.io/my-blog)로 운영할 때 저장소 이름과 똑같이 맞춰야 합니다.
 baseurl: "/hyblog"
 
