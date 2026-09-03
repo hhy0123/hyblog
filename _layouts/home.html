@@ -70,6 +70,9 @@ layout: default
             {% if post.categories.size > 0 %}
               {% for c in post.categories %}{% capture cat_class %}{% include category-color.html name=c %}{% endcapture %}<span class="badge badge-category {{ cat_class | strip }}">{{ c }}</span>{% endfor %}
             {% endif %}
+            {% if post.tags.size > 0 %}
+              {% for t in post.tags %}<span class="badge badge-tag">#{{ t }}</span>{% endfor %}
+            {% endif %}
           </p>
           <p class="post-excerpt">{{ post.excerpt | strip_html | strip_newlines | normalize_whitespace | truncate: 140 }}</p>
         </article>
