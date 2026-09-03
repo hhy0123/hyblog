@@ -460,12 +460,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 0.5rem;
   border-radius: 8px;
   border: 1px solid var(--border);
+  background: transparent;
   color: var(--text-muted);
   font-size: 0.9rem;
   font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.pagination a.page-link:hover {
+.pagination a.page-link:hover,
+.pagination button.page-link:hover {
   color: var(--link-hover);
   border-color: rgb(110 143 255 / 45%);
   text-decoration: none;
@@ -475,6 +480,46 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
   border-color: transparent;
   background: linear-gradient(135deg, var(--link), var(--accent-purple));
+  cursor: default;
+}
+
+/* ---------- List toolbar (정렬 토글) ---------- */
+
+.list-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.sort-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.sort-btn {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sort-btn + .sort-btn {
+  border-left: 1px solid var(--border);
+}
+
+.sort-btn:hover {
+  color: var(--text);
+}
+
+.sort-btn.is-active {
+  background: rgb(110 143 255 / 12%);
+  color: var(--link-hover);
 }
 
 /* ---------- Post / Page ---------- */

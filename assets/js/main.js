@@ -121,6 +121,9 @@ function initBookmarks() {
   }
 }
 
+// _config.yml의 pagination.per_page와 맞춰야 한다.
+var SORT_PER_PAGE = 4;
+
 function initPostSearch() {
   var input = document.getElementById("post-search");
   var indexEl = document.getElementById("search-index");
@@ -128,6 +131,8 @@ function initPostSearch() {
   var listEl = document.getElementById("post-list");
   var resultsEl = document.getElementById("search-results");
   var paginationEl = document.getElementById("pagination");
+  var sortPaginationEl = document.getElementById("sort-pagination");
+  var sortBtns = document.querySelectorAll(".sort-btn");
   var filterBtn = document.getElementById("bookmark-filter");
 
   if (!input || !indexEl || !listEl || !resultsEl) return;
@@ -192,6 +197,55 @@ function initPostSearch() {
     paintBookmarkButtons(getBookmarks());
   }
 
+  function resetSortButtons() {
+    sortBtns.forEach(function (b) {
+      b.classList.toggle("is-active", b.getAttribute("data-sort") === "asc");
+    });
+    if (sortPaginationEl) sortPaginationEl.hidden = true;
+  }
+
+  function renderSortPaginationControls(totalPages, page, direction) {
+    if (!sortPaginationEl) return;
+    sortPaginationEl.innerHTML = "";
+
+    function makeControl(label, targetPage, isCurrent) {
+      var el = document.createElement(isCurrent ? "span" : "button");
+      el.className = "page-link" + (isCurrent ? " current" : "");
+      el.textContent = label;
+      if (!isCurrent) {
+        el.type = "button";
+        el.addEventListener("click", function () {
+          renderSortedPage(direction, targetPage);
+        });
+      }
+      return el;
+    }
+
+    if (page > 1) sortPaginationEl.appendChild(makeControl("←", page - 1, false));
+    for (var i = 1; i <= totalPages; i++) {
+      sortPaginationEl.appendChild(makeControl(String(i), i, i === page));
+    }
+    if (page < totalPages) sortPaginationEl.appendChild(makeControl("→", page + 1, false));
+  }
+
+  function renderSortedPage(direction, page) {
+    var ordered = direction === "desc" ? posts.slice() : posts.slice().reverse();
+    var totalPages = Math.max(1, Math.ceil(ordered.length / SORT_PER_PAGE));
+    page = Math.min(Math.max(page, 1), totalPages);
+
+    listEl.hidden = true;
+    resultsEl.hidden = false;
+    if (paginationEl) paginationEl.hidden = true;
+
+    var start = (page - 1) * SORT_PER_PAGE;
+    renderResults(ordered.slice(start, start + SORT_PER_PAGE), "표시할 글이 없습니다.");
+
+    if (sortPaginationEl) {
+      sortPaginationEl.hidden = totalPages <= 1;
+      renderSortPaginationControls(totalPages, page, direction);
+    }
+  }
+
   function renderSearch() {
     var q = input.value.trim().toLowerCase();
 
@@ -199,12 +253,14 @@ function initPostSearch() {
       listEl.hidden = false;
       resultsEl.hidden = true;
       if (paginationEl) paginationEl.hidden = false;
+      resetSortButtons();
       return;
     }
 
     listEl.hidden = true;
     resultsEl.hidden = false;
     if (paginationEl) paginationEl.hidden = true;
+    if (sortPaginationEl) sortPaginationEl.hidden = true;
 
     var results = posts.filter(function (post) {
       var haystack = [post.title]
@@ -227,20 +283,40 @@ function initPostSearch() {
     listEl.hidden = true;
     resultsEl.hidden = false;
     if (paginationEl) paginationEl.hidden = true;
+    if (sortPaginationEl) sortPaginationEl.hidden = true;
 
     renderResults(results, "즐겨찾기한 글이 없습니다.");
   }
+
+  sortBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var direction = btn.getAttribute("data-sort");
+      sortBtns.forEach(function (b) {
+        b.classList.toggle("is-active", b === btn);
+      });
+
+      input.value = "";
+      if (filterBtn && filterBtn.classList.contains("is-active")) {
+        filterBtn.classList.remove("is-active");
+        filterBtn.setAttribute("aria-pressed", "false");
+      }
+
+      renderSortedPage(direction, 1);
+    });
+  });
 
   input.addEventListener("input", function () {
     if (filterBtn && filterBtn.classList.contains("is-active")) {
       filterBtn.classList.remove("is-active");
       filterBtn.setAttribute("aria-pressed", "false");
     }
+    resetSortButtons();
     renderSearch();
   });
 
   if (filterBtn) {
     document.addEventListener("bookmark-filter-toggled", function (e) {
+      resetSortButtons();
       if (e.detail.active) {
         input.value = "";
         renderBookmarked();

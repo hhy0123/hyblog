@@ -48,6 +48,13 @@ layout: default
 
 <div class="home-grid">
   <div class="home-main">
+    <div class="list-toolbar">
+      <div class="sort-toggle" role="group" aria-label="정렬 순서">
+        <button type="button" class="sort-btn is-active" data-sort="asc">오래된순</button>
+        <button type="button" class="sort-btn" data-sort="desc">최신순</button>
+      </div>
+    </div>
+
     <div class="post-list" id="post-list">
       {% for post in paginator.posts %}
         <article class="post-preview">
@@ -97,6 +104,8 @@ layout: default
       {% endif %}
     </nav>
     {% endif %}
+
+    <nav class="pagination" id="sort-pagination" hidden></nav>
   </div>
   {% include sidebar.html %}
 </div>
