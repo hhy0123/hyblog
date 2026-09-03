@@ -199,7 +199,7 @@ function initPostSearch() {
 
   function resetSortButtons() {
     sortBtns.forEach(function (b) {
-      b.classList.toggle("is-active", b.getAttribute("data-sort") === "asc");
+      b.classList.remove("is-active");
     });
     if (sortPaginationEl) sortPaginationEl.hidden = true;
   }
