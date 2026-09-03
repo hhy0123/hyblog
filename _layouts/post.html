@@ -28,6 +28,39 @@ layout: default
     <div class="post-content">
       {{ content }}
     </div>
+
+    {% assign sorted_posts = site.posts | sort: 'date' %}
+    {% assign post_count = sorted_posts.size %}
+    {% assign current_index = -1 %}
+    {% for p in sorted_posts %}
+      {% if p.url == page.url %}{% assign current_index = forloop.index0 %}{% endif %}
+    {% endfor %}
+
+    {% if current_index > -1 %}
+      {% assign prev_index = current_index | minus: 1 %}
+      {% assign next_index = current_index | plus: 1 %}
+      <nav class="post-nav">
+        {% if prev_index >= 0 %}
+          {% assign prev_post = sorted_posts[prev_index] %}
+          <a class="post-nav-link post-nav-prev" href="{{ prev_post.url | relative_url }}">
+            <span class="post-nav-label">← 이전 글</span>
+            <span class="post-nav-title">{{ prev_post.title }}</span>
+          </a>
+        {% else %}
+          <span class="post-nav-link post-nav-empty" aria-hidden="true"></span>
+        {% endif %}
+
+        {% if next_index < post_count %}
+          {% assign next_post = sorted_posts[next_index] %}
+          <a class="post-nav-link post-nav-next" href="{{ next_post.url | relative_url }}">
+            <span class="post-nav-label">다음 글 →</span>
+            <span class="post-nav-title">{{ next_post.title }}</span>
+          </a>
+        {% else %}
+          <span class="post-nav-link post-nav-empty" aria-hidden="true"></span>
+        {% endif %}
+      </nav>
+    {% endif %}
   </article>
 
   {% if page.toc %}

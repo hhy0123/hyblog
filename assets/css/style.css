@@ -710,6 +710,56 @@ table.rouge-table pre {
   height: auto;
 }
 
+/* ---------- Post prev/next nav ---------- */
+
+.post-nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.post-nav-link {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.post-nav-link:hover {
+  border-color: var(--link);
+}
+
+.post-nav-empty {
+  border: none;
+}
+
+.post-nav-next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.post-nav-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.post-nav-title {
+  font-weight: 600;
+  color: var(--heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -745,6 +795,15 @@ table.rouge-table pre {
 
   .hero {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .post-nav {
+    flex-direction: column;
+  }
+
+  .post-nav-next {
+    text-align: left;
     align-items: flex-start;
   }
 
