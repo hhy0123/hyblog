@@ -3,7 +3,7 @@ layout: post
 title: "선택자 이론은 아는데 왜 안 골라질까 — CSS Diner로 조합 감 잡기"
 date: 2026-09-02 14:18:00 +0900
 categories: [웹개발]
-tags: [css, selector, css-diner, frontend]
+tags: [css, selector, frontend]
 mermaid: true
 ---
 
