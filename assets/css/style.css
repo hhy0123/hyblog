@@ -753,6 +753,7 @@ table.rouge-table pre {
 }
 
 .post-nav-title {
+  min-width: 0;
   font-weight: 600;
   color: var(--heading);
   overflow: hidden;
