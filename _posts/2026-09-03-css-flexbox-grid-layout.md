@@ -7,7 +7,7 @@ tags: [css, flexbox, grid, tailwind, frontend]
 mermaid: true
 ---
 
-## 들어가며 (Situation)
+## 어제에 이어 카드 레이아웃을 배웠다 (Situation)
 
 어제([선택자 이론은 아는데 왜 안 골라질까 — CSS Diner로 조합 감 잡기]({{ '/posts/css-selector-basics-css-diner/' | relative_url }}))에 이어 오늘은 선택자 우선순위, 블록/인라인 요소의 차이, 그리고 레이아웃을 잡는 Flexbox와 Grid를 배웠다. 실습은 "오늘의 추천 상품" 카드 목록을 만드는 것이었는데, 처음엔 `div`로 카드만 감싸놓고 끝이었다.
 

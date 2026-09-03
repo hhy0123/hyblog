@@ -7,7 +7,7 @@ tags: [jekyll, github-actions, github-pages, ci-cd, infra]
 mermaid: true
 ---
 
-## 들어가며 (Situation)
+## 블로그 파이프라인을 직접 만들어보고 싶었다 (Situation)
 
 학습 기록을 남길 개인 블로그를 만들면서, 단순히 글만 올리는 게 아니라 **정적 사이트 빌드 → 배포까지의 파이프라인 전체를 직접 구성**해보고 싶었다. Jekyll(Chirpy 테마) 기반으로 블로그를 만들고 GitHub Actions로 GitHub Pages에 자동 배포하는 구조를 잡는 과정에서, 초기 스캐폴딩 이후 폴더 구조와 설정 파일을 몇 차례 고쳐야 했다.
 

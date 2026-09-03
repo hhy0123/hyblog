@@ -7,7 +7,7 @@ tags: [css, selector, frontend]
 mermaid: true
 ---
 
-## 들어가며 (Situation)
+## 이론은 다 이해했다고 생각했다 (Situation)
 
 어제 CSS 선택자 강의를 세 파트로 나눠 들었다. 전체·태그·ID·클래스 같은 기본 선택자부터, 속성 선택자와 후손·자손 선택자, `:hover`/`:active` 같은 반응 선택자, `:enabled`/`:disabled` 상태 선택자, 그리고 형제(동위) 선택자와 `:nth-child()` 구조 선택자, `:not()` 부정 선택자, `::selection` 문자 선택자까지 이어지는 내용이었다. 이론 설명을 들을 때는 각 선택자가 뭘 하는지 다 이해가 됐다.
 
