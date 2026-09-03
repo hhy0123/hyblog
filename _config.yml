@@ -50,9 +50,17 @@ baseurl: "/hyblog"
 # ------------ 아래는 특별한 이유 없으면 그대로 두는 걸 추천 ------------------
 
 plugins:
-  - jekyll-paginate
+  - jekyll-paginate-v2
 
-paginate: 4 # 홈 화면에 한 번에 보여줄 글 개수
+# 홈 화면 페이지네이션. 오래된 글(가장 먼저 쓴 글)부터 순서대로 넘어가도록 오름차순 정렬.
+pagination:
+  enabled: true
+  per_page: 4
+  permalink: '/page:num/'
+  sort_field: 'date'
+  sort_reverse: false
+
+# home.html이 페이지 링크를 만들 때 이 값을 그대로 참조하므로 위 permalink와 맞춰서 유지.
 paginate_path: "/page:num/"
 
 kramdown:
