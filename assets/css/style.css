@@ -290,12 +290,22 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.1rem 1.25rem;
 }
 
-.widget h3 {
+.widget summary {
   margin: 0 0 0.6rem;
   font-size: 0.92rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--accent-purple);
+  list-style: none;
+  cursor: default;
+}
+
+.widget summary::-webkit-details-marker {
+  display: none;
+}
+
+.widget details[open] summary {
+  margin-bottom: 0.6rem;
 }
 
 .widget p {
@@ -828,6 +838,23 @@ table.rouge-table pre {
   .post-sidebar {
     position: static;
     order: 2;
+  }
+
+  .sidebar .widget summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .sidebar .widget summary::after {
+    content: "\25BE";
+    color: var(--text-muted);
+    transition: transform 0.15s ease;
+  }
+
+  .sidebar .widget details[open] summary::after {
+    transform: rotate(180deg);
   }
 }
 

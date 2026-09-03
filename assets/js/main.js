@@ -36,7 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initPostSearch();
   initBookmarks();
+  collapseSidebarOnMobile();
 });
+
+function collapseSidebarOnMobile() {
+  if (!window.matchMedia("(max-width: 900px)").matches) return;
+
+  document.querySelectorAll(".sidebar .widget details").forEach(function (d) {
+    d.open = false;
+  });
+}
 
 var BOOKMARK_KEY = "hyblog-bookmarks";
 var STAR_SVG =

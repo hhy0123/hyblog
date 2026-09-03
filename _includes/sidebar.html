@@ -1,33 +1,45 @@
 <aside class="sidebar">
   <div class="widget widget-about">
-    <h3>소개</h3>
-    <p>{{ site.tagline }}</p>
-    <a class="widget-link" href="{{ '/about/' | relative_url }}">더 알아보기 →</a>
+    <details open>
+      <summary>소개</summary>
+      <div class="widget-body">
+        <p>{{ site.tagline }}</p>
+        <a class="widget-link" href="{{ '/about/' | relative_url }}">더 알아보기 →</a>
+      </div>
+    </details>
   </div>
 
   {% if site.categories.size > 0 %}
   <div class="widget widget-categories">
-    <h3>카테고리</h3>
-    <ul>
-      {% for cat in site.categories %}
-        <li>
-          <span class="dot dot-{{ forloop.index0 | modulo: 4 }}"></span>
-          {{ cat[0] }}
-          <span class="count">{{ cat[1].size }}</span>
-        </li>
-      {% endfor %}
-    </ul>
+    <details open>
+      <summary>카테고리</summary>
+      <div class="widget-body">
+        <ul>
+          {% for cat in site.categories %}
+            <li>
+              <span class="dot dot-{{ forloop.index0 | modulo: 4 }}"></span>
+              {{ cat[0] }}
+              <span class="count">{{ cat[1].size }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </details>
   </div>
   {% endif %}
 
   {% if site.tags.size > 0 %}
   <div class="widget widget-tags">
-    <h3>태그</h3>
-    <div class="tag-cloud">
-      {% for tag in site.tags %}
-        <span class="badge badge-tag cat-{{ forloop.index0 | modulo: 4 }}">#{{ tag[0] }}</span>
-      {% endfor %}
-    </div>
+    <details open>
+      <summary>태그</summary>
+      <div class="widget-body">
+        <div class="tag-cloud">
+          {% for tag in site.tags %}
+            <span class="badge badge-tag cat-{{ forloop.index0 | modulo: 4 }}">#{{ tag[0] }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </details>
   </div>
   {% endif %}
 </aside>
