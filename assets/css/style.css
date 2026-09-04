@@ -4,18 +4,18 @@
    =========================================================== */
 
 :root {
-  --bg: #0b0c10;
-  --bg-elevated: #111219;
-  --bg-code: #14151f;
-  --border: #22232f;
-  --text: #c7c9db;
-  --text-muted: #8a8da3;
-  --heading: #e7e8f5;
-  --link: #6e8fff;
-  --link-hover: #93a9ff;
-  --accent-purple: #9b7bff;
-  --badge-bg: #1c1d2e;
-  --badge-text: #b7bce0;
+  --bg: #0a0e1a;
+  --bg-elevated: #111827;
+  --bg-code: #151b2e;
+  --border: #2a2f42;
+  --text: #d0d4e8;
+  --text-muted: #9399b0;
+  --heading: #f0f2ff;
+  --link: #6b9eff;
+  --link-hover: #a0c4ff;
+  --accent-purple: #b291ff;
+  --badge-bg: #1f2540;
+  --badge-text: #c5cae0;
   --max-width: 1120px;
 }
 
@@ -44,8 +44,9 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(600px circle at 12% -10%, rgb(110 143 255 / 20%), transparent 60%),
-    radial-gradient(700px circle at 92% 8%, rgb(155 123 255 / 16%), transparent 55%),
+    radial-gradient(700px circle at 12% -15%, rgb(107 158 255 / 28%), transparent 65%),
+    radial-gradient(750px circle at 92% 8%, rgb(178 145 255 / 22%), transparent 60%),
+    radial-gradient(650px circle at 50% 110%, rgb(107 158 255 / 12%), transparent 65%),
     var(--bg);
 }
 
@@ -78,11 +79,12 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 10;
   border-bottom: 2px solid transparent;
   background-image:
-    linear-gradient(rgb(11 12 16 / 85%), rgb(11 12 16 / 85%)),
+    linear-gradient(rgb(10 14 26 / 92%), rgb(10 14 26 / 92%)),
     linear-gradient(90deg, var(--link), var(--accent-purple));
   background-origin: border-box;
   background-clip: padding-box, border-box;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgb(107 158 255 / 12%);
 }
 
 .site-header-inner {
@@ -97,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-title {
   font-size: 1.25rem;
   font-weight: 800;
-  background: linear-gradient(90deg, #8fb0ff, var(--accent-purple));
+  background: linear-gradient(110deg, #a0c4ff, #b291ff, #a0c4ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -115,8 +117,9 @@ h1, h2, h3, h4, h5, h6 {
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--link-hover);
-  background: rgb(110 143 255 / 12%);
+  background: rgb(107 158 255 / 18%);
   text-decoration: none;
+  border-color: rgb(107 158 255 / 35%);
 }
 
 /* ---------- Main content ---------- */
@@ -149,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.2rem;
   color: #fff;
   background: linear-gradient(135deg, var(--link), var(--accent-purple));
-  box-shadow: 0 8px 24px rgb(110 143 255 / 25%);
+  box-shadow: 0 12px 32px rgb(107 158 255 / 35%), inset 0 1px 0 rgb(255 255 255 / 15%);
 }
 
 .hero-search {
@@ -191,13 +194,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-search input:hover {
-  border-color: rgb(110 143 255 / 35%);
+  border-color: rgb(107 158 255 / 45%);
+  background: var(--bg-elevated);
 }
 
 .hero-search input:focus {
   border-color: var(--link);
   background: var(--bg);
-  box-shadow: 0 0 0 4px rgb(110 143 255 / 16%), 0 8px 24px rgb(0 0 0 / 30%);
+  box-shadow: 0 0 0 4px rgb(107 158 255 / 22%), 0 12px 32px rgb(0 0 0 / 35%);
 }
 
 .search-box:focus-within .search-icon {
@@ -237,14 +241,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bookmark-filter-btn:hover {
-  border-color: rgb(110 143 255 / 35%);
+  border-color: rgb(107 158 255 / 45%);
   color: var(--text);
+  background: rgb(107 158 255 / 8%);
 }
 
 .bookmark-filter-btn.is-active {
   border-color: var(--link);
-  background: rgb(110 143 255 / 12%);
+  background: rgb(107 158 255 / 18%);
   color: var(--link-hover);
+  box-shadow: 0 4px 12px rgb(107 158 255 / 20%);
 }
 
 .bookmark-filter-btn.is-active .star-icon path {
@@ -288,6 +294,13 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 1.1rem 1.25rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 25%);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.widget:hover {
+  border-color: rgb(107 158 255 / 25%);
+  box-shadow: 0 8px 20px rgb(107 158 255 / 12%);
 }
 
 .widget summary {
@@ -367,7 +380,14 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.post-preview:hover {
+  border-color: rgb(107 158 255 / 25%);
+  box-shadow: 0 8px 24px rgb(107 158 255 / 15%);
+  transform: translateY(-2px);
 }
 
 .post-preview::before {
@@ -381,11 +401,6 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(180deg, var(--link), var(--accent-purple));
 }
 
-.post-preview:hover {
-  transform: translateY(-2px);
-  border-color: rgb(110 143 255 / 40%);
-  box-shadow: 0 10px 30px rgb(0 0 0 / 35%);
-}
 
 .post-preview:first-child {
   margin-top: 0;
@@ -432,11 +447,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .bookmark-btn:hover {
   color: var(--link-hover);
-  background: rgb(110 143 255 / 12%);
+  background: rgb(107 158 255 / 18%);
+  box-shadow: 0 2px 8px rgb(107 158 255 / 15%);
 }
 
 .bookmark-btn.is-active {
   color: #f4c15c;
+  background: rgb(244 193 92 / 15%);
+  box-shadow: 0 2px 8px rgb(244 193 92 / 15%);
 }
 
 .bookmark-btn.is-active svg path {
@@ -486,7 +504,8 @@ h1, h2, h3, h4, h5, h6 {
 .pagination a.page-link:hover,
 .pagination button.page-link:hover {
   color: var(--link-hover);
-  border-color: rgb(110 143 255 / 45%);
+  border-color: rgb(107 158 255 / 55%);
+  background: rgb(107 158 255 / 10%);
   text-decoration: none;
 }
 
@@ -495,6 +514,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: transparent;
   background: linear-gradient(135deg, var(--link), var(--accent-purple));
   cursor: default;
+  box-shadow: 0 4px 12px rgb(107 158 255 / 30%);
 }
 
 /* ---------- List toolbar (정렬 토글) ---------- */
@@ -532,8 +552,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sort-btn.is-active {
-  background: rgb(110 143 255 / 12%);
+  background: rgb(107 158 255 / 18%);
   color: var(--link-hover);
+  border-color: rgb(107 158 255 / 35%);
 }
 
 /* ---------- Post / Page ---------- */
@@ -590,20 +611,26 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.1rem 0.5rem;
   font-size: 0.78rem;
   margin-right: 0.35rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.badge:hover {
+  border-color: currentColor;
+  box-shadow: 0 2px 8px currentColor / 20%;
 }
 
 .badge-category {
-  border-color: rgb(110 143 255 / 35%);
+  border-color: rgb(107 158 255 / 45%);
 }
 
 .badge-tag {
-  border-color: rgb(155 123 255 / 35%);
+  border-color: rgb(178 145 255 / 45%);
 }
 
-.badge.cat-0 { border-color: rgb(110 143 255 / 45%); color: #a9bcff; }
-.badge.cat-1 { border-color: rgb(155 123 255 / 45%); color: #c9b6ff; }
-.badge.cat-2 { border-color: rgb(79 209 197 / 45%); color: #8fe9df; }
-.badge.cat-3 { border-color: rgb(244 114 182 / 45%); color: #f8a8cf; }
+.badge.cat-0 { border-color: rgb(107 158 255 / 55%); color: #b8c9ff; background: rgb(107 158 255 / 12%); }
+.badge.cat-1 { border-color: rgb(178 145 255 / 55%); color: #d4c2ff; background: rgb(178 145 255 / 12%); }
+.badge.cat-2 { border-color: rgb(79 209 197 / 55%); color: #a0f0e8; background: rgb(79 209 197 / 12%); }
+.badge.cat-3 { border-color: rgb(244 114 182 / 55%); color: #ffb8d9; background: rgb(244 114 182 / 12%); }
 
 .toc {
   background: var(--bg-elevated);
@@ -611,6 +638,13 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 10px;
   padding: 0.9rem 1.15rem;
   font-size: 0.88rem;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toc:hover {
+  border-color: rgb(107 158 255 / 25%);
+  box-shadow: 0 8px 20px rgb(107 158 255 / 12%);
 }
 
 .toc strong {
@@ -676,9 +710,11 @@ h1, h2, h3, h4, h5, h6 {
 .post-content blockquote {
   margin: 1.25rem 0;
   padding: 0.6rem 1.1rem;
-  border-left: 3px solid var(--accent-purple);
+  border-left: 4px solid var(--accent-purple);
   background: var(--bg-elevated);
   color: var(--text-muted);
+  box-shadow: inset 0 0 0 1px rgb(178 145 255 / 15%);
+  border-radius: 0 4px 4px 0;
 }
 
 .post-content table {
