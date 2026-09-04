@@ -1083,6 +1083,7 @@ function render(){
 
   const sorted=alive.map(r=>r.score).sort((a,b)=>b-a);
   const gap = sorted.length>1 ? sorted[0]-sorted[1] : 100;
+  const gapText = sorted.length>1 ? '1위-2위 점수차 '+gap+'점' : '경쟁 후보 없음 (단독 생존)';
   const confPct=Math.min(100, gap*2.5);
   let confLabel='낮음';
   if(gap>=20) confLabel='매우 높음';
@@ -1130,7 +1131,7 @@ function render(){
       '<div style="flex:1;min-width:180px">'+
         '<div class="bubble">'+lines[mood]+'</div>'+
         '<p class="verdict-name" style="margin-top:10px">'+(best?best.icon+' '+best.name+' — '+best.score+'점':'후보 없음')+'</p>'+
-        '<p class="verdict-desc">살아남은 용의자 '+alive.length+'명 중 최고 점수로 확정 · 1위-2위 점수차 '+gap+'점. 증거를 바꾸면 결론도 다시 계산됩니다.</p>'+
+        '<p class="verdict-desc">살아남은 용의자 '+alive.length+'명 중 최고 점수로 확정 · '+gapText+'. 증거를 바꾸면 결론도 다시 계산됩니다.</p>'+
       '</div>'+
     '</div>';
   if(best) prevCulprit=best.id;
@@ -1163,7 +1164,7 @@ function render(){
     '<span class="rank-title">'+rEmoji+' '+rTitle+'</span>'+
     '<span class="confidence-wrap">확신도 '+
       '<span class="confidence-track"><span class="confidence-fill" style="width:'+confPct+'%"></span></span> '+
-      confLabel+' ('+gap+'점차)</span>';
+      confLabel+' ('+(sorted.length>1?gap+'점차':'단독')+')</span>';
 
   const elim=results.filter(r=>r.reason);
   const flagList=Object.entries(state.flags).filter(function(e){return e[1];}).map(function(e){return flagLabel[e[0]];});
