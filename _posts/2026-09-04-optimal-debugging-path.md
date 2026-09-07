@@ -2,7 +2,7 @@
 layout: post
 title: "최적의 디버깅 경로 찾기 — 확률 기반 의사결정 시뮬레이터"
 date: 2026-09-04 15:45:45 +0900
-categories: [Backend]
+categories: [백엔드]
 tags: [debugging, algorithm, bayesian, decision-tree, simulator]
 mermaid: true
 ---
