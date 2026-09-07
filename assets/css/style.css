@@ -808,8 +808,8 @@ table.rouge-table pre {
 }
 
 .mermaid svg {
-  max-width: 100%;
-  height: auto;
+  max-width: 100% !important;
+  height: auto !important;
 }
 
 /* ---------- Post prev/next nav ---------- */
