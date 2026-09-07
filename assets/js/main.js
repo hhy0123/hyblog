@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initPostSearch();
   initBookmarks();
   collapseSidebarOnMobile();
+  moveTocAfterTitleOnMobile();
 });
 
 function collapseSidebarOnMobile() {
@@ -45,6 +46,16 @@ function collapseSidebarOnMobile() {
   document.querySelectorAll(".sidebar .widget details").forEach(function (d) {
     d.open = false;
   });
+}
+
+function moveTocAfterTitleOnMobile() {
+  if (!window.matchMedia("(max-width: 900px)").matches) return;
+
+  var toc = document.querySelector(".post-sidebar");
+  var header = document.querySelector(".post-header");
+  if (toc && header) {
+    header.insertAdjacentElement("afterend", toc);
+  }
 }
 
 var BOOKMARK_KEY = "hyblog-bookmarks";
