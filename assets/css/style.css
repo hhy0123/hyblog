@@ -880,7 +880,14 @@ table.rouge-table pre {
   .sidebar,
   .post-sidebar {
     position: static;
+  }
+
+  .sidebar {
     order: 2;
+  }
+
+  .post-sidebar {
+    order: -1;
   }
 
   .sidebar .widget summary {
