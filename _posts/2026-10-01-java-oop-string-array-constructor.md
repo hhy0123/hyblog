@@ -7,13 +7,13 @@ tags: [java, oop, 배열, 생성자, 클래스]
 mermaid: true
 ---
 
-`chap03-object-oriented-programming`을 한 챕터 통째로 배운 날. String 클래스, 배열, 사용자 정의 자료형(클래스), 생성자까지 자바 객체지향의 입구를 정리한 학습 노트다.
+String 클래스, 배열, 사용자 정의 자료형(클래스), 생성자까지 자바 객체지향의 입구를 정리한 학습 노트다.
 
 <!--more-->
 
 ## 메소드 다음은 객체였다 (Situation)
 
-조건문·반복문·메소드까지 배운 뒤, 오늘은 `chap03-object-oriented-programming`을 통째로 진행했다. `a_object` 패키지에서 String과 배열을, `b_oop` 패키지에서 사용자 정의 자료형(클래스)과 생성자를 배웠다.
+조건문·반복문·메소드까지 배운 뒤, 오늘은 String과 배열, 그리고 사용자 정의 자료형(클래스)과 생성자까지 배웠다.
 
 ## 배운 내용 (Task)
 

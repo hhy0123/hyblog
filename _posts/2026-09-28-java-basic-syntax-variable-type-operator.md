@@ -13,7 +13,7 @@ mermaid: true
 
 ## 인텔리제이 켜고 처음 만난 자바 (Situation)
 
-추석 연휴가 끝나고 인텔리제이(IntelliJ)로 자바 수업을 다시 시작했다. `chap01-java-basic` 모듈에서 `Helloworld.java`부터 시작해 실행 구조, 리터럴과 변수, 형변환, 연산자까지 순서대로 실습했다.
+추석 연휴가 끝나고 인텔리제이(IntelliJ)로 자바 수업을 다시 시작했다. `Helloworld.java`부터 시작해 실행 구조, 리터럴과 변수, 형변환, 연산자까지 순서대로 실습했다.
 
 ## 배운 내용 (Task)
 

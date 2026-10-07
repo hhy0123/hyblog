@@ -7,13 +7,13 @@ tags: [java, oop, 오버로딩, static, 싱글톤, final]
 mermaid: true
 ---
 
-`chap03-object-oriented-programming`의 `b_oop` 패키지 마지막 구간, `e_overloading`부터 `f_keyword`(static·싱글톤·final)까지 배운 학습 노트다.
+메소드 오버로딩부터 static·싱글톤·final 키워드까지 배운 학습 노트다.
 
 <!--more-->
 
 ## 캡슐화·추상화 다음은 키워드였다 (Situation)
 
-지난번 결석으로 혼자 공부했던 캡슐화·추상화(`c_encapsulation`, `d_abstraction`)에 이어, 오늘은 `e_overloading`과 `f_keyword`(`a_static`, `b_singleton`, `c_final`) 패키지를 수업으로 배웠다. `b_oop` 패키지의 마지막 구간이다.
+지난번 결석으로 혼자 공부했던 캡슐화·추상화에 이어, 오늘은 메소드 오버로딩과 static·싱글톤·final 키워드를 수업으로 배웠다.
 
 ## 배운 내용 (Task)
 

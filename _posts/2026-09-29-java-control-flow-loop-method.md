@@ -7,13 +7,13 @@ tags: [java, 조건문, 반복문, 메소드, 단축평가]
 mermaid: true
 ---
 
-`chap02-control-flow-and-method`에서 if/switch·for/while/do-while·메소드까지, 프로그램 흐름을 제어하고 코드를 함수 단위로 나누는 법을 배운 학습 노트다.
+if/switch·for/while/do-while·메소드까지, 프로그램 흐름을 제어하고 코드를 함수 단위로 나누는 법을 배운 학습 노트다.
 
 <!--more-->
 
 ## 변수·연산자 다음은 흐름 제어 (Situation)
 
-어제 변수와 연산자로 자바의 기본기를 다졌다면, 오늘은 `a_controlflow`, `b_loop`, `c_method` 세 패키지를 순서대로 실습하며 조건문·반복문·메소드를 배웠다.
+어제 변수와 연산자로 자바의 기본기를 다졌다면, 오늘은 조건문·반복문·메소드를 순서대로 실습했다.
 
 ## 배운 내용 (Task)
 
