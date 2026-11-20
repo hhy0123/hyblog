@@ -142,14 +142,16 @@ async function runAsync() {
 
 ```js
 async function getReviews() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
-    const reviews = await res.json();   // 문자열 JSON -> JS 객체
+    const data = fetch('https://jsonplaceholder.typicode.com/posts?_limit=5'); // Promise 반환
+
+    const res = await data;           // Response 객체
+    const reviews = await res.json(); // 문자열 JSON -> JS 객체
     console.log(reviews);
     console.log(reviews[0].title);
 }
 ```
 
-`fetch()`가 반환하는 것도 결국 Promise라서, `await`로 응답 객체를 받고 `res.json()`(이것도 Promise!)을 한 번 더 `await`해야 실제 JS 객체가 나온다는 흐름을 정리했다. 수업 예제 코드에는 `fetch` 결과를 변수에 담지 않고 바로 `await`하거나, `async` 없이 `await`를 쓰는 등 아직 고쳐야 할 부분이 남아있어서, 오늘 배운 Promise 반환값과 `async` 함수 제약을 되짚으며 직접 고쳐보는 게 다음 숙제다.
+`fetch()`가 반환하는 것도 결국 Promise라서, `await`로 응답 객체를 받고 `res.json()`(이것도 Promise!)을 한 번 더 `await`해야 실제 JS 객체가 나온다는 흐름을 정리했다. 처음 예제 코드엔 `fetch` 결과를 변수에 담지 않고 바로 `console.log`를 찍거나, `async` 없는 함수에 `await`를 쓰는 실수가 있었는데, 오늘 배운 "fetch도 Promise를 반환한다"는 점과 "`await`는 `async` 함수 안에서만 쓸 수 있다"는 제약을 되짚어서 바로 고쳤다.
 
 ## 결과 (Result)
 
@@ -157,7 +159,6 @@ async function getReviews() {
 
 ## 더 학습하면 좋은 개념
 
-- **fetch 예제 완성하기** - 수업 코드에 `fetch` 결과를 변수에 담지 않은 부분, `async` 없이 `await`를 쓴 부분이 남아있다. 직접 고쳐서 리뷰 목록이 실제로 출력되는 것까지 확인해야 한다.
 - **Promise.all / Promise.race** - 여러 개의 비동기 작업을 동시에 실행하고 결과를 한 번에 받는 방법은 오늘 다루지 않았다.
 - **axios와 fetch의 차이** - 수업에서 `fetch`/`ajax`/`axios`가 언급만 되고 넘어갔는데, 실제 프로젝트에서 왜 axios를 더 선호하는지 비교해봐야겠다.
 
