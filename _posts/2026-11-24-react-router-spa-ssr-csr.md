@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "컴포넌트를 조립하고 길을 내다 - props, react-router-dom, 그리고 SPA가 도는 원리"
-date: 2026-11-24 16:00:00 +0900
+date: 2026-11-24 09:00:00 +0900
 categories: [React]
 tags: [react, react-router-dom, spa, csr, ssr, css-module]
 mermaid: true
